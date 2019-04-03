@@ -1,1 +1,0 @@
-SocialEvents Project
