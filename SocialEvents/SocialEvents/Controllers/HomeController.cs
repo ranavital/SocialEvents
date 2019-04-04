@@ -1,12 +1,10 @@
-﻿using SocialEvents.Dal;
-using SocialEvents.Models;
-using SocialEvents.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+<<<<<<< HEAD
 namespace SocialEvents.Controllers {
 
     public class HomeController : Controller {
@@ -21,52 +19,25 @@ namespace SocialEvents.Controllers {
             }
             else  
                 return RedirectToAction("HomePage");
+=======
+namespace SocialEvents.Controllers
+{
+    public class HomeController : Controller
+    {
+        public ActionResult Index()
+        {
+            return View();
+>>>>>>> 69e62b384e0d1c24adab5b0dd7151dad9dc09546
         }
 
+        public ActionResult About()
+        {
+            ViewBag.Message = "Your application description page.";
 
-        public ActionResult HomePage() {
-            if (Session["CurrentUser"] != null)
-                return RedirectToAction("RedirectByUser");
             return View();
         }
-        public ActionResult LoginPage() {
-            if (Session["CurrentUser"] != null)
-                return RedirectToAction("RedirectByUser");
-            return View(new UserLogin());
-        }
-        [HttpPost]
-        public ActionResult Login(UserLogin usr) {
-            if (Session["CurrentUser"] != null)
-                return RedirectToAction("RedirectByUser");
-            if (ModelState.IsValid) {
-                UserDal usrDal = new UserDal();
-                User objUser =usrDal.Users.FirstOrDefault<User>(x=> x.Email==usr.Email);
-                if (objUser == null)
-                {
-                    TherapistDal trpDal = new TherapistDal();
-                    Therapist objTherapist= trpDal.Users.FirstOrDefault<Therapist>(x => x.Email == usr.Email);
-                    if (objTherapist == null || objTherapist.Password != usr.Password)
-                    {
-                        ViewBag.errorUserLogin = "UserName or Password incorrect";
-                        return View("LoginPage", usr);
-                    }
-                    Session["CurrentUser"] = objTherapist;
-                    return RedirectToAction("RedirectByUser");
-                }
-                if (objUser.Password != usr.Password) {
-                    ViewBag.errorUserLogin = "UserName or Password incorrect";
-                    return View("LoginPage", usr);
-                }
-                objUser.Password = "";
-                Session["CurrentUser"] = objUser;
-                return RedirectToAction("RedirectByUser");
-            }
-            else {
-                usr.Password = "";
-                return View("LoginPage", usr);
-            }
-        }
 
+<<<<<<< HEAD
         public ActionResult Logout() {
             Session["CurrentUser"] = null;
             return RedirectToAction("RedirectByUser");
@@ -107,7 +78,13 @@ namespace SocialEvents.Controllers {
                 usr.Password = "";
                 return View("SignUpPage");
             }
+=======
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+>>>>>>> 69e62b384e0d1c24adab5b0dd7151dad9dc09546
         }
     }
-
 }
