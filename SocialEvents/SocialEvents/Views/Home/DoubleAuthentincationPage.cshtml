@@ -1,0 +1,35 @@
+﻿@model SocialEvents.ViewModel.DoubleAuthentincationVM
+
+@{
+    ViewBag.Title = "DoubleAuthentincationPage";
+}
+
+<h2>DoubleAuthentincationPage</h2>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery-3.3.1.slim.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<div id="DoubleAuthentincationForm">
+    @using (Html.BeginForm("Accept", "Home", FormMethod.Post, new { Class = "form-group" }))
+    {
+        @TempData["usr"]= Model.Usr;
+        @TempData["number"]= Model.number;
+
+<div>
+    <label>Enter number</label>
+    @Html.TextBoxFor(m => m.number2, new { Class = "form-control" })
+    <div style="color:red">@Html.ValidationMessageFor(x => x.number2)</div>
+</div>
+
+<input class="btn btn-primary" id="register" type="submit" value="accept" />
+}
+</div>
+
+@*<script>
+        $("#register").click({
+            function() {
+                alert("hi")
+            }
+        });
+        //$.post(accept, user, null);
+    }
+</script>*@

@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<SocialEvents.ViewModel.SituationViewModel>
+    @using SocialEvents.Models;
 @{
     ViewBag.Title = "AddSitution";
 }
@@ -6,7 +7,10 @@
 <h2>AddSituation</h2>
 
 <p>
-    @Html.ActionLink("Create New quiz", "Create", null, new { @class = "btn btn-primary" })
+    @if (Session["CurrentUser"] is Therapist)
+    {
+         @Html.ActionLink("Create New quiz", "Create", null, new { @class = "btn btn-primary" })
+    }
 </p>
 
 <br />
@@ -19,7 +23,7 @@
             <b>Image</b>
         </th>
     </tr>
-
+    <a href="~/Views/Situation/AddSituation.cshtml">~/Views/Situation/AddSituation.cshtml</a>
     @foreach (var item in Model)
     {
         <tr>
