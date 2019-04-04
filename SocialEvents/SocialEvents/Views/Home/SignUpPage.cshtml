@@ -1,0 +1,33 @@
+﻿@model SocialEvents.ViewModel.VMUserRegister
+
+@{
+    ViewBag.Title = "SignUpPage";
+}
+
+<h2>SignUpPage</h2>
+
+
+<div id="registerForm">
+    @using (Html.BeginForm("SignUp", "Home", FormMethod.Post, new { Class = "form-group" }))
+    {
+        <div>
+            <label>Email</label>
+            @Html.TextBoxFor(m => m.NewUser.Email, new { Class = "form-control" })
+            <div style="color:red">@Html.ValidationMessageFor(x => x.NewUser.Email)</div>
+        </div>
+
+        <div>
+            <label>סיסמה</label>
+            @Html.PasswordFor(m => m.Password, new { Class = "form-control" })
+            <div style="color:red">@Html.ValidationMessageFor(x => x.Password)</div>
+        </div>
+
+        <div>
+            <label>אשר סיסמה</label>
+            @Html.PasswordFor(m => m.ConfirmPassword, new { Class = "form-control" })
+            <div style="color:red">@Html.ValidationMessageFor(x => x.ConfirmPassword)</div>
+        </div>
+
+        <input class="btn btn-primary" id="register" type="submit" value="הרשמה" />
+    }
+</div>
