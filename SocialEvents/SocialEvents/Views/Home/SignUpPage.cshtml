@@ -17,17 +17,17 @@
         </div>
 
         <div>
-            <label>סיסמה</label>
+            <label>Password</label>
             @Html.PasswordFor(m => m.Password, new { Class = "form-control" })
             <div style="color:red">@Html.ValidationMessageFor(x => x.Password)</div>
         </div>
 
         <div>
-            <label>אשר סיסמה</label>
+            <label>Password again</label>
             @Html.PasswordFor(m => m.ConfirmPassword, new { Class = "form-control" })
             <div style="color:red">@Html.ValidationMessageFor(x => x.ConfirmPassword)</div>
         </div>
 
-        <input class="btn btn-primary" id="register" type="submit" value="הרשמה" />
+        <input class="btn btn-primary" id="register" type="submit" value="Signup" />
     }
 </div>

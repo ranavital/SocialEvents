@@ -107,13 +107,13 @@ namespace SocialEvents.Controllers
                 Therapist objTherapist = trpDal.Users.FirstOrDefault<Therapist>(x => x.Email == usr.Email);
                 if (objUser != null || objTherapist != null)
                 {
-                    ViewBag.errorUserRegister = "שם המשתמש שבחרת קיים";
+                    ViewBag.errorUserRegister = "Username already exists";
                     return View("SignUpPage");
                 }
                 usrDal.Users.Add(new User { Email = usr.Email, Password = usr.Password });
                 usrDal.SaveChanges();
 
-                ViewBag.registerSuccessMsg = "ההרשמה בוצעה בהצלחה!";
+                ViewBag.registerSuccessMsg = "Signup succeeded!";
                 return View("HomePage");
             }
 
