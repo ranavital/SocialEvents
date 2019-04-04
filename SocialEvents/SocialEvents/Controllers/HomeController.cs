@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-<<<<<<< HEAD
+
 namespace SocialEvents.Controllers {
 
     public class HomeController : Controller {
@@ -19,7 +19,7 @@ namespace SocialEvents.Controllers {
             }
             else  
                 return RedirectToAction("HomePage");
-=======
+
 namespace SocialEvents.Controllers
 {
     public class HomeController : Controller
@@ -27,7 +27,7 @@ namespace SocialEvents.Controllers
         public ActionResult Index()
         {
             return View();
->>>>>>> 69e62b384e0d1c24adab5b0dd7151dad9dc09546
+
         }
 
         public ActionResult About()
@@ -37,7 +37,7 @@ namespace SocialEvents.Controllers
             return View();
         }
 
-<<<<<<< HEAD
+
         public ActionResult Logout() {
             Session["CurrentUser"] = null;
             return RedirectToAction("RedirectByUser");
@@ -78,13 +78,13 @@ namespace SocialEvents.Controllers
                 usr.Password = "";
                 return View("SignUpPage");
             }
-=======
+
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
 
             return View();
->>>>>>> 69e62b384e0d1c24adab5b0dd7151dad9dc09546
+
         }
     }
 }
