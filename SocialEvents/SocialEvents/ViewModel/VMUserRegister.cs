@@ -19,7 +19,9 @@ namespace SocialEvents.ViewModel
         [DataType(DataType.Password)]
         [Compare("Password",ErrorMessage ="Enter password again")]
         public string ConfirmPassword { get; set; }
-        [Required]
-        public User NewUser { get; set; }
+        [Required(ErrorMessage = "Required field")]
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
+        public string Email { get; set; }
+        
     }
 }

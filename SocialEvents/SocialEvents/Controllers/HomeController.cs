@@ -19,10 +19,8 @@ namespace SocialEvents.Controllers {
                 else
                     return RedirectToAction("TherapistPage", "Therapst");
             }
-            else  {
-                TempData["notAuthorized"] = "אין הרשאה!";
+            else  
                 return RedirectToAction("HomePage");
-            }
         }
 
 
@@ -79,38 +77,31 @@ namespace SocialEvents.Controllers {
             return View(new VMUserRegister());
         }
         [HttpPost]
-        public ActionResult SignUp(VMUserRegister usr)
-        {
+        public ActionResult SignUp(VMUserRegister usr) {
+
             if (Session["CurrentUser"] != null)
                 return RedirectToAction("RedirectByUser");
-            usr.NewUser.Password = usr.Password;
             ModelState.Clear();
             TryValidateModel(usr);
-            if (ModelState.IsValid)
-            {
+            if (ModelState.IsValid) {
                 UserDal usrDal = new UserDal();
                 TherapistDal trpDal = new TherapistDal();
-                User objUser = usrDal.Users.FirstOrDefault<User>(x=> x.Email==usr.NewUser.Email );
-                Therapist objTherapist = trpDal.Users.FirstOrDefault<Therapist>(x => x.Email == usr.NewUser.Email);
+                User objUser = usrDal.Users.FirstOrDefault<User>(x=> x.Email==usr.Email );
+                Therapist objTherapist = trpDal.Users.FirstOrDefault<Therapist>(x => x.Email == usr.Email);
                 if (objUser != null || objTherapist!=null)
                 {
-                    ViewBag.errorUserRegister = "שם המשתמש שבחרת קיים";
+                    ViewBag.errorUserRegister = "The user name is already exist";
                     return View("SignUpPage");
                 }
-                TryValidateModel(usr.NewUser);
-                if (ModelState.IsValid)
-                {
-                    usrDal.Users.Add(usr.NewUser);
+               
+                    usrDal.Users.Add(new User {Email=usr.Email, Password=usr.Password });
                     usrDal.SaveChanges();
 
                     ViewBag.registerSuccessMsg = "ההרשמה בוצעה בהצלחה!";
                     return View("HomePage");
-                }else
-                {
-                    usr.Password = "";
-                    return View("SignUpPage");
+              
                 }
-            }
+            
             else
             {
                 usr.Password = "";
