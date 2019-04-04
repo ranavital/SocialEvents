@@ -19,8 +19,8 @@
         <th>
             <b>Description</b>
         </th>
-        <th>
             <b>Image</b>
+        <th>
         </th>
     </tr>
     <a href="~/Views/Situation/AddSituation.cshtml">~/Views/Situation/AddSituation.cshtml</a>
@@ -31,8 +31,14 @@
                 @Html.Raw(item.Description)
             </td>
             <td>
-                <img src="/Situation/RetrieveImage/@item.SolutionID" alt="" height=100 width=200 />
+                <img src="/Situation/RetrieveImage/@item.SolutionID" alt="" height=100 width=200 onclick="redirectFunction(@item.SolutionID)" />
             </td>
         </tr>
     }
 </table>
+
+<script>
+    function redirectFunction(a) {
+        window.location.href = "/Situation/GenerateQuiz/" + a;
+    }
+</script>

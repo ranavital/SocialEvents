@@ -2,7 +2,7 @@ using System;
 using System.Text;
 using System.Net.Mail;
 
-namespace ConsoleApp1
+namespace SocialEvents.Classes
 {
     class Program
     {

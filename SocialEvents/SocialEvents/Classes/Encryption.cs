@@ -4,7 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Web;
 
-namespace MVCProject.Classes
+namespace SocialEvents.Classes
 {
     //A Class that allows to encrypt the passwords.
     public class Encryption

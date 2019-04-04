@@ -1,0 +1,96 @@
+﻿@using SocialEvents.Models;
+@{
+    ViewBag.Title = "GenerateQuiz";
+}
+
+<style>
+    #ans {
+        display: none;
+    }
+
+    .col {
+        float: left;
+        width: 33.33%;
+        padding-left: 10px;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+        padding: 15px;
+    }
+    .button {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+    }
+</style>
+<br />
+<div align="center" class="form-group">
+    <img src="/Situation/RetrieveImage/@TempData["ID"]" alt="" height=400 width=600 />
+    <div class="col-md-10">
+    </div>
+</div>
+<br /><br />
+<br /><br />
+<div align="center">
+    <h1><strong>@TempData["Description"]</strong></h1>
+</div>
+<div class="row">
+    <div class="col">
+        <h1><strong>תשובה 3</strong></h1>
+    </div>
+    <div class="col">
+        <h1><strong>תשובה 2</strong></h1>
+    </div>
+    <div class="col">
+        <h1><strong>תשובה 1</strong></h1>
+    </div>
+</div>
+
+<div>
+    <div class="row">
+        <div class="col alert alert-info">
+            <h3>@TempData["IncorrectAnswer2"]</h3>
+        </div>
+        <div class="col alert alert-info">
+            <h3>@TempData["CorrectAnswer"]</h3>
+        </div>
+        <div class="col alert alert-info">
+            <h3>@TempData["IncorrectAnswer1"]</h3>
+        </div>
+    </div>
+
+    <div id="ans" class="row">
+        <div class="col alert alert-danger" style="color:red">
+            <h4><b>@TempData["IncorrectDescription1"]</b></h4>
+        </div>
+        <div class="col alert alert-success">
+            <h4><b>@TempData["CorrectDescription"]</b></h4>
+        </div>
+        <div class="col alert alert-danger" style="color:red">
+            <h4><b>@TempData["IncorrectDescription2"]</b></h4>
+        </div>
+    </div>
+    <br />
+    <div align="center">
+    <button onclick="myFunction()" class="button">גלה את התשובה</button>
+    </div>
+</div>
+<script>
+    function myFunction() {
+        var x = document.getElementById("ans");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>

@@ -1,4 +1,4 @@
-﻿using MVCProject.Classes;
+﻿using SocialEvents.Classes;
 using SocialEvents.Dal;
 using SocialEvents.Models;
 using SocialEvents.ViewModel;
