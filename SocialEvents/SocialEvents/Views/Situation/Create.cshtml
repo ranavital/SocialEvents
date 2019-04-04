@@ -1,0 +1,140 @@
+﻿@model SocialEvents.ViewModel.SituationViewModel
+@{
+    /**/
+
+    ViewBag.Title = "Create";
+}
+
+<script src="~/ckeditor/ckeditor.js"></script>
+<script src="~/ckeditor/adapters/jquery.js"></script>
+
+<h2>Create New Content With Image</h2>
+
+<script type="text/javascript">
+    function fileCheck(obj) {
+        var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
+        if ($.inArray($(obj).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+            alert("Only '.jpeg','.jpg', '.png', '.gif', '.bmp' formats are allowed.");
+        }
+    }
+</script>
+<style>
+    .left {
+        width: 200px;
+        float: left;
+    }
+
+    .right {
+        width: 200px;
+        float: right;
+    }
+
+    .center {
+        width: 200px;
+        margin: 0 auto;
+    }
+
+    #container {
+        margin: 10px;
+        padding: 10px;
+        height: 100px;
+    }
+    .col {
+        float: left;
+        width: 33.33%;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+</style>
+
+@using (Html.BeginForm("Create", "Situation", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <hr />
+    @Html.ValidationSummary(true)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Image, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" name="ImageData" id="ImageData" onchange="fileCheck(this);" />
+            @Html.ValidationMessageFor(model => model.Image)
+        </div>
+    </div>
+    <br /><br />
+          <tr>
+              <th>
+                  @Html.LabelFor(model => model.Description)
+              </th>
+             
+              <td>
+                  @Html.TextAreaFor(model => model.Description, new { placeholder = "Description", @cols = "120", @rows = "10", @style = "width:100%;" })
+                  @Html.ValidationMessageFor(model => model.Description)
+              </td>
+          </tr>
+
+    <div class="row">
+        <div class="col">
+            @Html.LabelFor(model => model.IncorrectAnswer2, "Incorrect answer 2")
+        </div>
+        <div class="col">
+            @Html.LabelFor(model => model.CorrectAnswer, "Correct answer")
+        </div>
+        <div class="col">
+            @Html.LabelFor(model => model.IncorrectAnswer1, "Incorrect answer 1")
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            @Html.TextAreaFor(model => model.IncorrectAnswer2, new { placeholder = "Incorrect answer 2", @cols = "20", @rows = "2", @style = "width:100%;" })
+            @Html.ValidationMessageFor(model => model.IncorrectAnswer2)
+        </div>
+        <div class="col">
+            @Html.TextAreaFor(model => model.CorrectAnswer, new { placeholder = "Correct answer", @cols = "20", @rows = "2", @style = "width:100%;" })
+            @Html.ValidationMessageFor(model => model.CorrectAnswer)
+
+        </div>
+        <div class="col">
+            @Html.TextAreaFor(model => model.IncorrectAnswer1, new { placeholder = "Incorrect answer 1", @cols = "20", @rows = "2", @style = "width:100%;" })
+            @Html.ValidationMessageFor(model => model.IncorrectAnswer1)
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            @Html.LabelFor(model => model.IncorrectDescription1, "Incorrect description 1")
+        </div>
+        <div class="col">
+            @Html.LabelFor(model => model.CorrectDescription, "Correct description")
+        </div>
+        <div class="col">
+            @Html.LabelFor(model => model.IncorrectDescription2, "Incorrect Description 2")
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            @Html.TextAreaFor(model => model.IncorrectDescription1, new { placeholder = "Incorrect Description 1", @cols = "30", @rows = "4", @style = "width:100%;" })
+            @Html.ValidationMessageFor(model => model.IncorrectDescription1)
+        </div>
+        <div class="col">
+            @Html.TextAreaFor(model => model.CorrectDescription, new { placeholder = "Correct Description", @cols = "30", @rows = "4", @style = "width:100%;" })
+            @Html.ValidationMessageFor(model => model.CorrectDescription)
+        </div>
+        <div class="col">
+            @Html.TextAreaFor(model => model.IncorrectDescription2, new { placeholder = "Incorrect Description 2", @cols = "30", @rows = "4", @style = "width:100%;" })
+            @Html.ValidationMessageFor(model => model.IncorrectDescription2)
+        </div>
+    </div>
+    <br /><br />
+    <div class="form-group" align="center">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+}

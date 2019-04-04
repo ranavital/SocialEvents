@@ -1,0 +1,52 @@
+﻿@model IEnumerable<SocialEvents.ViewModel.SituationViewModel>
+@{
+    ViewBag.Title = "AddSitution";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New Page Content", "Create", null, new { @class = "btn btn-primary" })
+</p>
+
+<br />
+<table class="table" style="width: 1200px;">
+    <tr>
+        <th>
+            <b>Image</b>
+        </th>
+        <th>
+            <b>Description</b>
+        </th>
+        <th>
+            <b>Correct Answer</b>
+        </th>
+        <th>
+            <b>Incorrect Answer</b>
+        </th>
+        <th>
+            <b>Incorrect Answer</b>
+        </th>
+    </tr>
+    
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td style="width: 500px;">
+            @Html.Raw(item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CorrectAnswer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IncorrectAnswer1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IncorrectAnswer2)
+        </td>
+        <td>
+            <img src="/Situation/RetrieveImage/@item.SolutionID" alt="" height=100 width=200 />
+        </td>
+    </tr>
+    }
+</table>
