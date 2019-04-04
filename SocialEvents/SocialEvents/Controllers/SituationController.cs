@@ -12,6 +12,21 @@ namespace SocialEvents.Controllers
     public class SituationController : Controller
     {
         private DBContext db = new DBContext();
+        private bool Authorize()
+        {
+            object currentUser = (object)(Session["CurrentUser"]);
+            if (currentUser is Therapist)
+                return true;
+            else
+                return false;
+        }
+
+        public ActionResult TherapistPage()
+        {
+            if (!Authorize())
+                return RedirectToAction("RedirectByUser", "Home");
+            return View();
+        }
 
         [Route("AddSituation")]
         [HttpGet]

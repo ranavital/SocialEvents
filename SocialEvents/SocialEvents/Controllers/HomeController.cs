@@ -21,7 +21,7 @@ namespace SocialEvents.Controllers
                 if (currentUsr is User)
                     return RedirectToAction("UserPage", "User");
                 else
-                    return RedirectToAction("TherapistPage", "Therapst");
+                    return RedirectToAction("TherapistPage", "Situation");
             }
             else
             {
